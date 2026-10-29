@@ -7,7 +7,7 @@ Options:
  BEGET_User API user
  BEGET_Password API password
 Issues: github.com/acmesh-official/acme.sh/issues/6200
-Author: ARNik <arnik@arnik.ru>
+Author: ARNik <arnik@arnik.ru>, VD42 <vladislav.kochemaev@vd42.net>
 '
 
 Beget_Api="https://api.beget.com/api"
@@ -264,9 +264,9 @@ _api_call() {
   # --data-urlencode output_format=json \
   # --data-urlencode "input_data=$input_data")
 
-  url="$api_url?login=$Beget_Username&passwd=$Beget_Password&input_format=json&output_format=json"
+  url="$api_url?login=$Beget_Username&passwd=$Beget_Password&output_format=json"
   if [ -n "$input_data" ]; then
-    url=${url}"&input_data="
+    url=${url}"&input_format=json&input_data="
     url=${url}$(echo "$input_data" | _url_encode)
   fi
   res=$(_get "$url")
